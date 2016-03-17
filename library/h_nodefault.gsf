@@ -1,0 +1,6 @@
+function h_nodefault()
+'set frame off'
+'set grads off'
+'set xlab off'
+'set ylab off'
+return

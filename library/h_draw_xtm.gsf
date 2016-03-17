@@ -1,0 +1,47 @@
+*
+*  (c) Bui Hoang Hair 2013
+*  Utilities library
+*  Draw tick marks in x direction
+*  Usage
+*  h_draw_xtm xmin xmax dx maj
+
+function h_draw_xtm(min,max,dx,maj,siz)
+ if(min='min');min=_xmin;endif
+ if(max='max');max=_xmax;endif
+ if(dx='dx');dx=(_xmax-_xmin)/50;endif
+ if(maj='maj');maj=5;endif
+ if(siz='siz');siz=0.14;endif
+
+;*get graphic infomation
+'q gxinfo'
+'set line 1 1 4'
+
+'draw line '_px1' '_py1' '_px2' '_py1
+'draw line '_px1' '_py2' '_px2' '_py2
+
+
+if (dx<0);
+  temp=max;max=min;min=temp
+  dx=-dx
+endif
+
+
+x=min;i=0
+while(x<=max)
+  px=h_get_px(x)
+  ;*draw minor tickmarks
+  if (0=math_mod(i,maj))
+    py=_py1; py1=py+0.1;'draw line 'px' 'py' 'px' 'py1
+    py=_py2;py1=py-0.1; 'draw line 'px' 'py' 'px' 'py1
+    py=_py1-0.1;'set string 1 tc 4 0';
+    'set strsiz 'siz;
+    if (siz>0); 'draw string 'px' 'py' 'x; endif
+  else
+    py=_py1;py1=py+0.05; 'draw line 'px' 'py' 'px' 'py1
+    py=_py2;py1=py-0.05; 'draw line 'px' 'py' 'px' 'py1
+  endif 
+
+  x=x+dx;i=i+1
+endwhile
+
+return

@@ -1,0 +1,14 @@
+* From graphic pixel to X value
+function h_get_x(px)
+ say 'Xscale type:'_xscale
+*type=linear or log
+ if (_xscale='linear')
+   x = _apx*px + _bpx
+ endif
+
+ if (_xscale='log')
+   x = math_exp(_apx*px + _bpx)   
+ endif 
+
+return x
+

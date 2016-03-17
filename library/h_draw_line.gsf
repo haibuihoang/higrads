@@ -1,0 +1,60 @@
+*
+* 
+* Draw line in Current chart coordinates (onchart=1, default) or Grads page coordinates (onchart=0)
+* The line can be an arrow by set the 6th argument, arrow='s','e', or 'se' (for at the start, end, 
+* or both start & end of line) 
+* Arrow drawing is Adapted from https://github.com/kodamail/gscript/blob/master/arrow.gs  Chihiro Kodama
+*
+* 2016 by Bui Hoang Hai
+* 
+
+function h_draw_line(x1,y1,x2,y2,onchart,arrow,angle,head)
+
+if (x1='x1' | x2='x2' | y1='y1' | y2='y2' )
+   say "You need to specify the coordinates"; return
+endif 
+if (angle='angle');angle=30;endif
+if (head='head');head=0.15;endif
+if (onchart='onchart');onchart=1;endif
+if (arrow='arrow');arrow=0;endif
+
+if (onchart=1) ;*convert from chart coorniates to page coordinates
+   x1=h_get_px(x1);
+   y1=h_get_py(y1);
+   x2=h_get_px(x2);
+   y2=h_get_py(y2);
+endif
+
+
+
+***** Draw *****
+  pi = 3.14159
+  alpha = math_atan2( y2-y1, x2-x1 )
+
+
+  'draw line 'x1' 'y1' 'x2' 'y2
+  
+  if (arrow='e' | arrow='se')
+  x = x2 + head * math_cos( (180+angle)*pi/180 + alpha )
+  y = y2 + head * math_sin( (180+angle)*pi/180 + alpha )
+  'draw line 'x2' 'y2' 'x' 'y
+
+  x = x2 + head * math_cos( (180-angle)*pi/180 + alpha )
+  y = y2 + head * math_sin( (180-angle)*pi/180 + alpha )
+  'draw line 'x2' 'y2' 'x' 'y
+  endif
+
+  if (arrow='s' | arrow='se')
+  x = x1 + head * math_cos( (angle)*pi/180 + alpha )
+  y = y1 + head * math_sin( (angle)*pi/180 + alpha )
+  'draw line 'x1' 'y1' 'x' 'y
+  x = x1 + head * math_cos( (-angle)*pi/180 + alpha )
+  y = y1 + head * math_sin( (-angle)*pi/180 + alpha )
+  'draw line 'x1' 'y1' 'x' 'y
+  endif
+
+    
+
+return
+
+

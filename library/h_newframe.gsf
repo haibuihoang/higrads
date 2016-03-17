@@ -1,0 +1,70 @@
+*  (c) Bui Hoang Hair 2013
+*   Define (virtual) frame
+*
+
+*
+*  set new frame with width & height (inch)
+*
+*
+
+function h_newframe(w,h)
+
+;*Real area=plotting area+margins
+width = w + _left + _right  
+height = h + _top + _bottom
+
+
+
+if (_debug=1)
+  say 'newframe: 'w' 'h
+  say 'newframe: Old coords '_x1' '_x2' '_y1' '_y2;
+endif
+
+if (_x1='_x1')
+  say "Please call function h_initframe() first"
+  return
+endif
+
+;*define new frame
+x1=_x2
+x2=x1+width
+y2=_y2
+xmax=_gxmax + 0.0001
+
+if (x2>xmax)  ;*if overflow
+   say x2'>'xmax
+   x1=0; x2=x1+width
+   y2=_y1min
+endif
+
+y1=y2-height
+
+if (y1<_y1min) ;*define new y1min
+   _y1min=y1
+endif
+
+;*define new frame coordinates
+_x1=x1;_x2=x2
+_y1=y1;_y2=y2
+
+;* draw a bounding box
+;* test
+if (_debug=1)
+  'set line 15 5'
+  'draw rec '_x1' '_y1' '_x2' '_y2
+endif
+
+;*set up auto margin 0.5 each
+'q gxinfo'
+lin=sublin(result,2);xmax=subwrd(lin,4);ymax=subwrd(lin,6)
+_px1=_x1 + _left
+_px2=_x2 - _right
+_py1=_y1 + _bottom
+_py2=_y2 - _top
+'set parea '_px1' '_px2' '_py1' '_py2
+
+
+if (_debug=1);say 'Newframe: New coords '_x1' '_x2' '_y1' '_y2;endif
+
+return
+

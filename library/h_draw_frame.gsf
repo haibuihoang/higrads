@@ -1,0 +1,17 @@
+*Draw the frame of the ploting
+
+function h_draw_frame(color,style,thickness)
+  if (color='color');color=1;endif
+  if (style='style');style=1;endif
+  if (thickness='thickness');thickness=5;endif
+
+'set line 'color' 'style' 'thickness
+say 'set line 'color' 'style' 'thickness
+'draw line '_px1' '_py1' '_px2' '_py1
+'draw line '_px1' '_py2' '_px2' '_py2
+
+'draw line '_px1' '_py1' '_px1' '_py2
+'draw line '_px2' '_py1' '_px2' '_py2
+
+return
+

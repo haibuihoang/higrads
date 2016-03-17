@@ -1,0 +1,84 @@
+*
+*  color bar for hgsf
+*  Bui Hoang Hai, 2013
+*  
+
+function h_cbarn(pos,offset,sz)
+
+if(pos='pos');pos='b';endif
+if(offset='offset');offset='0';endif
+if(sz='sz');fsiz=0.14;endif
+
+*
+*  Check shading information
+*
+  'query shades'
+  shdinfo = result
+  if (subwrd(shdinfo,1)='None') 
+    say 'Cannot plot color bar: No shading information'
+    return
+  endif
+
+  cnum=subwrd(shdinfo,5)
+;*  say 'Number of colors:'cnum
+
+  ;*draw bottom colorbar
+  if (pos='b')
+    cx1=_px1
+    cx2=_px2
+    cy2=_py1 - 0.5 + offset
+    cy1=cy2-0.25
+    dx=(cx2-cx1)/cnum
+    ;*draw a boundingbox
+    'draw rec 'cx1' 'cy1' 'cx2' 'cy2
+    c=1
+    while(c<=cnum)
+      info=sublin(shdinfo,c+1)
+      ;*say info
+      color=subwrd(info,1)
+      level=subwrd(info,2)
+      x1=cx1+(c-1)*dx;x2=x1+dx 
+      'set line 'color
+      'draw recf 'x1' 'cy1' 'x2' 'cy2
+      'set line 1'
+      'draw rec 'x1' 'cy1' 'x2' 'cy2
+      if (c>1)
+        y1=cy1-0.1
+        'set string 1 tc 0.14 0'
+        'draw string 'x1' 'y1' 'level
+      endif
+      c=c+1
+    endwhile
+  endif
+  if (pos='r')
+    cx1=_px2+0.1+offset
+    cx2= cx1+0.25
+    cy1=_py1 
+    cy2=_py2
+    dy=(cy2-cy1)/cnum
+    ;*draw a boundingbox
+    'draw rec 'cx1' 'cy1' 'cx2' 'cy2
+    c=1
+    while(c<=cnum)
+      info=sublin(shdinfo,c+1)
+      ;*say info
+      color=subwrd(info,1)
+      level=subwrd(info,2)
+      y1=cy1+(c-1)*dy;y2=y1+dy 
+      'set line 'color
+      'draw recf 'cx1' 'y1' 'cx2' 'y2
+      'set line 1'
+      'draw rec 'cx1' 'y1' 'cx2' 'y2
+      if (c>1)
+        x=cx2+0.1
+        'set strsiz 'sz
+        'set string 1 l 4 0'
+        'draw string 'x' 'y1' 'level
+      endif
+      c=c+1
+    endwhile
+
+  endif 
+
+
+return

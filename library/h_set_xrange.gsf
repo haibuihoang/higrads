@@ -1,0 +1,42 @@
+function h_set_xrange(xmin,xmax,type)
+*type=linear or log
+  if (type='type');type='linear';endif
+  _xmin=xmin
+  _xmax=xmax
+  
+  
+*calclate coeficient for convertions px->x, x->px....
+* x is the value, px is pixel value
+* px = _ax *x + _bx
+* x = _apx *px + _bpx   
+
+  if (type='linear')
+     _xscale='linear'
+     _ax = (_px2 - _px1 ) / (_xmax - _xmin)
+     _bx = _px1 - _ax*_xmin
+     _apx = (_xmax - _xmin) / (_px2 - _px1)
+     _bpx = _xmin - _apx*_px1
+     if (_debug=1)
+       say 'Linear scale:_ax:'_ax' _bx:'_bx' _apx'_apx' _bpx'_bpx
+     endif
+  endif
+
+*natual logarite scale
+* ln(x) = _apx*px + _bpx 
+* px = _ax*ln(x) + _bx
+  if (type='log')
+     _xscale='log'
+     _apx = (math_log(_xmax) - math_log(_xmin)) / (_px2 - _px1)
+     _bpx = math_log(_xmin) - _apx*_px1
+     _ax = (_px2 - _px1) / (math_log(_xmax) - math_log(_xmin))
+     _bx = _px1 - _ax*math_log(_xmin)
+     if (_debug=1)
+       say 'Log scale:_ax:'_ax' _bx:'_bx' _apx'_apx' _bpx'_bpx
+     endif
+  endif
+
+
+
+return
+
+

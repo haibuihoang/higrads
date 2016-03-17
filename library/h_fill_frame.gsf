@@ -1,0 +1,17 @@
+*  (c) Bui Hoang Hair 2013
+*  Just fill the current frame with a color
+*
+
+function h_fill_frame(color1,color2)
+
+if (color1='color1');color1=0;endif
+if (color2='color2');color2=1;endif
+
+;*get graphic infomation
+'set line 'color1
+'draw recf '_x1' '_y1' '_x2' '_y2
+'set line 'color2
+'draw recf '_px1' '_py1' '_px2' '_py2
+
+return
+

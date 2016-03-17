@@ -1,0 +1,42 @@
+function h_set_yrange(ymin,ymax,type)
+*type=linear or log
+  if (type='type');type='linear';endif
+  _ymin=ymin
+  _ymax=ymax
+  
+  
+*calclate coeficient for convertions px->x, x->px....
+* y is the value, px is pixel value
+* py = _ay *y + _by
+* y = _apy *py + _bpy   
+
+  if (type='linear')
+     _yscale='linear'
+     _ay = (_py2 - _py1 ) / (_ymax - _ymin)
+     _by = _py1 - _ay*_ymin
+     _apy = (_ymax - _ymin) / (_py2 - _py1)
+     _bpy = _ymin - _apy*_py1
+     if (_debug=1)
+       say 'Linear scale:_ay:'_ay' _by:'_by' _apy'_apy' _bpy'_bpy
+     endif
+  endif
+
+*natual logarite scale
+* ln(x) = _apy*px + _bpy 
+* py = _ax*ln(y) + _by
+  if (type='log')
+     _yscale='log'
+     _apy = (math_log(_ymax) - math_log(_ymin)) / (_py2 - _py1)
+     _bpy = math_log(_ymin) - _apy*_py1
+     _ay = (_py2 - _py1) / (math_log(_ymax) - math_log(_ymin))
+     _by = _py1 - _ay*math_log(_ymin)
+     if (_debug=1)
+       say 'Log scale:_ay:'_ay' _by:'_by' _apy'_apy' _bpy'_bpy
+     endif
+  endif
+
+
+
+return
+
+

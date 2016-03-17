@@ -1,0 +1,11 @@
+* From graphic y -> pixel value
+function h_get_py(y)
+*type=linear or log
+ if (_yscale='linear')
+   py = _ay*y + _by
+ endif
+ if (_yscale='log')
+   py = _ay*math_log(y) + _by
+ endif
+return py
+

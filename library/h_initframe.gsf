@@ -1,0 +1,27 @@
+*  (c) Bui Hoang Hair 2013
+*   Init frame
+*
+
+function h_initframe(debug)
+if (debug='debug');debug=0;endif
+_debug=debug
+'set vpage off'
+
+;*get graphic infomation
+'q gxinfo'
+lin=sublin(result,2);_gxmax=subwrd(lin,4);_gymax=subwrd(lin,6)
+
+_x1=0
+_x2=_x1
+_y1=_gymax
+_y2=_y1
+_y1min=_y2
+
+*init default margin
+_top=0.5
+_right=0.5
+_bottom=0.5
+_left=0.5
+
+return
+

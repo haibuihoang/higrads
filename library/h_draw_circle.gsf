@@ -1,0 +1,19 @@
+function h_draw_circle(xc,yc,r)
+maxi=100
+twopi=6.28318530718
+i=1
+x0 = xc + r
+y0 = yc 
+while(i<=maxi)
+  ang = twopi*(i-1)/maxi
+  x = xc + r*math_cos(ang)
+  y = yc + r*math_sin(ang) 
+  if (i>1)
+    h_draw_line(xold,yold,x,y)
+  endif
+  xold=x; yold=y
+  i=i+1
+endwhile
+h_draw_line(xold,yold,x0,y0)
+
+return

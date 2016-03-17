@@ -1,0 +1,15 @@
+*  (c) Bui Hoang Hair 2013
+*   reinit frame
+*
+
+function h_resetframe()
+
+_x1=0
+_x2=_x1
+_y1=_gymax
+_y2=_y1
+_y1min=_y2
+
+
+return
+

@@ -1,0 +1,15 @@
+*  (c) Bui Hoang Hair 2013
+*   The next frame will be on the new line, instead of appending to the right of the previous ones
+*
+
+function h_break()
+_x1=0
+_x2=_x1
+_y2=_y1
+_y1=_y2
+_y1min=_y2
+
+if(_debug=1)say 'Break:'_x1' '_x2' '_y1' '_y2;endif
+
+return
+

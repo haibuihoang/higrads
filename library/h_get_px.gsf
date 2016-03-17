@@ -1,0 +1,11 @@
+* From graphic x -> pixel value
+function h_get_px(x)
+*type=linear or log
+ if (_xscale='linear')
+   px = _ax*x + _bx
+ endif
+ if (_xscale='log')
+   px = _ax*math_log(x) + _bx
+ endif
+return px
+

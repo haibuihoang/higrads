@@ -1,0 +1,21 @@
+*  (c) Bui Hoang Hair 2013
+*   Set margin for plotting area in CSS style
+*   e.g. h_set_margin(1,0.5) will set margin 1 for both top and bottom, 0.5 for both left and right
+*   all margins are in inch (in virtual page)
+*   yeah, it's possible to set the unit in actual orginal page
+*   h_setmarginr, maybe ;)
+*
+
+function h_set_margin(t,r,b,l)
+if (t='t');t=0.5;endif
+if (r='r');r=t  ;endif
+if (b='b');b=t  ;endif
+if (l='l');l=r  ;endif
+
+_top=t
+_right=r
+_bottom=b
+_left=l
+
+return
+
