@@ -51,5 +51,6 @@ There are lots of extra functions in hlib library for plotting. You can think of
 Creating a custom plot & tickmarks
 
 
-#Other link
+#Other links
 * [GrADS Homepage](http://grads.iges.org/grads/)
+* [My blog](http://haibuihoang.blogspot.com)
