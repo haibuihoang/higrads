@@ -1,6 +1,10 @@
 # HiGrads 
 HiGrads is a GrADS script library which help composing Grads subplot in an easy way as well as some chart plotting functions.
 
+The figure below shows the fundamental concept of frames in HiGrads approach. Each frame is considered a block, which is place adjacent to each other. This concept is borrowed from CSS’s box model, which is standard in web design. Beside the plotting area dimensions (width & height), a box has four margins (top, right, bottom, left). The code to generated this plot is just about 60 lines of code and is included in the libary (h_demo.gs).
+
+![HiGrads Frames](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/h_demo.png)
+
 ##A crash course
 ### 1. Installation
 You just need to unpack the libary (zip file) and copy all the files to GrADs libary. For easy maintenence, all HiGrads files have the prefix h_. 
