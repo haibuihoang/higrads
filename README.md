@@ -1,5 +1,6 @@
-# higrads
-A grads script library for managing subplots &amp; and other plotting functions 
+# HiGrads 
+HiGrads is a GrADS script library which help composing Grads subplot in an easy way as well as some chart plotting functions.
+
 
 
 #Other link
