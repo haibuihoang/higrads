@@ -40,7 +40,7 @@ Define a new frame, you can use function ```h_newframe(w,h)```. Where w & h are 
 h_newframe(3,3)
 ```
 
-Means that you define a box with w=5 inches, h=2 inches. After using that function, every grads display commands will be bound in the plotting area of that box. To create a new box, you can simple call ```h_newframe``` again (with same or different parameters).
+Means that you define a box with w=3 and h=3 inches. After using that function, every grads display commands will be bound in the plotting area of that box. To create a new box, you can simple call ```h_newframe``` again (with same or different parameters).
 
 What about margin? Well, all margins tooks the default values of 0.5 inches. To manage the margin of the frame, you use the function ```h_setmargin(top,right,bottom,left)``` *before* ```h_newframe```. (Remember the first is the top, then run clockwise direction, similar to CSS margin). For example:
 ```
