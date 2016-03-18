@@ -11,7 +11,7 @@ You just need to unpack the libary (zip file) and copy all the files to GrADs li
 
 > grads -p 
 
-Then, you can test HiGrads by open GrADS (portrai mode recommended) and type h_test 
+Then, you can test HiGrads by open GrADS (portrait mode recommended) and type h_test 
 
 > h_test
 
