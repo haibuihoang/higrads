@@ -31,6 +31,7 @@ y=min
 i=0
 while(y<=max)
   py = h_get_py(y)
+  if (py<=_py2 & py>=_py1)
   if (0=math_mod(i,maj))
     x1=_px1;x2=x1+0.1; 'draw line 'x1' 'py' 'x2' 'py''
     x1=_px2;x2=x1-0.1;'draw line 'x1' 'py' 'x2' 'py''
@@ -40,7 +41,7 @@ while(y<=max)
     x1=_px1;x2=x1+0.05; 'draw line 'x1' 'py' 'x2' 'py''
     x1=_px2;x2=x1-0.05; 'draw line 'x1' 'py' 'x2' 'py''
   endif 
-
+  endif
   y=y+dy;i=i+1
 endwhile
 

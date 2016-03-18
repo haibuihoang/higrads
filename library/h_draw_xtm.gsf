@@ -29,6 +29,7 @@ endif
 x=min;i=0
 while(x<=max)
   px=h_get_px(x)
+  if (px<=_px2 & px>=_px1)
   ;*draw minor tickmarks
   if (0=math_mod(i,maj))
     py=_py1; py1=py+0.1;'draw line 'px' 'py' 'px' 'py1
@@ -40,7 +41,7 @@ while(x<=max)
     py=_py1;py1=py+0.05; 'draw line 'px' 'py' 'px' 'py1
     py=_py2;py1=py-0.05; 'draw line 'px' 'py' 'px' 'py1
   endif 
-
+  endif
   x=x+dx;i=i+1
 endwhile
 
