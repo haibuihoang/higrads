@@ -9,9 +9,9 @@ The figure below shows the fundamental concept of frames in HiGrads approach. Ea
 ### 1. Installation
 You just need to unpack the libary (zip file) and copy all the files to GrADs libary. For easy maintenence, all HiGrads files have the prefix h_. 
 
-> grads -p 
-
 Then, you can test HiGrads by open GrADS (portrait mode recommended) and type h_test 
+
+> grads -p 
 
 > h_test
 
