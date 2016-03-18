@@ -16,6 +16,7 @@ Then, you can test HiGrads by open GrADS (portrai mode recommended) and type h_t
 > h_test
 
 If you get the following plot, then HiGrads work! 
+
 ![HiGrads Test](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/h_test.png)
 
 You can open file h_test.gs which included in the libary to have a glance of how short and easy the plot is made. There is even not needed any data file! In the next section, we will go on a short tutorials of how these things work.
@@ -88,15 +89,65 @@ First, ```h_nodefault``` indicated that we will not use default tick marks of gr
 ```h_draw_ltitle``` is for draw a left-aligned title (similarly, ```h_draw_rtitle``` is for right-aligned title). 
 The last one is 'h_cbarn' function to display the color scale. It has 3 parameters, the first is either 'r' or 'b', which means right or bottom postion, the second (optional) is the offset of postion, the 3rd (optional) is the font size. 
 
-The plot should look like this!
+The plot should look like this
+
 ![Example 1](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/example1.png)
 
 
+###3. Let's draw a chart!!!
+To understand more about HiGrads, let's draw a chart, an interesting one! We are going to draw this set of equation
+> x = 16sin^3(t)
 
+> y = 13cos(t) - 5cos(2t) - 2cos(3t) - cos(4t)
 
-###3. Additional functions
-There are lots of extra functions in hlib library for plotting. You can think of HiGrads as a plotting library.
-Creating a custom plot & tickmarks
+> t is ranged from 0 to 2Pi
+
+First step, set up a 6x6inch plot with range from -30 to 30 for both x and y coordinates and draw the basic tick marks plus two gray lines through the origin
+```'reinit'
+'set display color white '; 'c'
+r=gsfallow('on')
+h_initframe()
+h_set_margin(1)
+h_newframe(6,6)
+h_set_xrange(-30,30); h_set_yrange(-30,30)
+h_draw_xtm(-30,30,1,10);h_draw_ytm(-30,30,1,10)
+'set line 15 1 1';
+h_draw_line(-30,0,30,0)
+h_draw_line(0,-30,0,30)
+h_draw_ltitle('My Heart')
+````
+
+Now we willd draw the chart using function ```h_draw_line```. This functions similar to ```draw line``` command in GrADS, but far more powerful because it cause draw directly on chart coordinates (default) Or physical coordinates and you can set the arrow head at the start, end, or both. Please refer to HiGrads function descriptions for more details about this. 
+
+```
+pi=4*math_atan(1)
+dt=0.001
+'set rgb 16 255 40 200'
+'set line 16 1 6'
+t=0; while(t<=2*pi)
+   x=16*math_pow(math_sin(t),3)
+   y=13*math_cos(t) - 5*math_cos(2*t) - 2*math_cos(3*t) - math_cos(4*t)
+   if (t>0)
+      h_draw_line(x_o,y_o,x,y)
+   endif
+   x_o=x; y_o=y
+t=t+dt; endwhile
+```
+
+Final small touch!
+```
+*draw the arrow
+'set line 1 1 1'
+h_draw_line(2,2,15,15,1,'s')
+px=h_get_px(15); py=h_get_py(15)+0.1
+'set string 1 bc'
+'draw string 'px' 'py' You are here!'
+```
+
+Now running the script (example2.gs), you should get a nice animation drawing the heart (because we set dt to a very small value) and this is the final result which you can print out during Valentine day as a present and prove that science is not so boring.
+
+![My Heart!](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/example2.png)
+
 
 
 #Other links
