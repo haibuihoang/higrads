@@ -85,7 +85,8 @@ h_cbarn('r',0,0.1)
 ```
 There are some new HiGrads functions (h_) are envolved here. 
 First, ```h_nodefault``` indicated that we will not use default tick marks of grads. In order to use HiGrads ticks marks, we need to define the X and Y coordinates by ```h_set_xrange(x1,x2)``` and ```h_set_yrange(y1,y2)```. Then ```h_draw_xtm``` and ```h_draw_ytm``` will handle the tickmarks drawing. ```h_draw_xtm``` and ```h_draw_ytm``` take 4 parameter, ```(start, end, increment, major)```, which mean it will draw minor ticks from ```start``` every ```increment``` value through ```end```, major ticks and labels are drawn every ```major``` ticks marks.
-```h_draw_ltitle``` is for draw a left-aligned title (similarly, ```h_draw_rtitle``` is for right-aligned title). It has 3 parameter, the first are either 'r' or 'b', which mean right or bottom postion, the second (optional) are the offset of postion, the 3rd (optional) are the font size. 
+```h_draw_ltitle``` is for draw a left-aligned title (similarly, ```h_draw_rtitle``` is for right-aligned title). 
+The last one is 'h_cbarn' function to display the color scale. It has 3 parameters, the first is either 'r' or 'b', which means right or bottom postion, the second (optional) is the offset of postion, the 3rd (optional) is the font size. 
 
 The plot should look like this!
 ![Example 1](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/example1.png)
