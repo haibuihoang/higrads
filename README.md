@@ -99,14 +99,14 @@ The plot should look like this
 
 
 ###3. Let's draw a chart!!!
-To understand more about HiGrads, let's draw a chart, an interesting one! We are going to draw this set of equation
+To understand more about HiGrads, let's draw a chart, and it must be an interesting one! So we are going to draw this set of equation
 > x = 16sin^3(t)
 
 > y = 13cos(t) - 5cos(2t) - 2cos(3t) - cos(4t)
 
-> t is ranged from 0 to 2Pi
+> where t ranges from 0 to 2Pi
 
-First step, set up a 6x6inch plot with range from -30 to 30 for both x and y coordinates and draw the basic tick marks plus two gray lines through the origin
+First step, set up a 6x6 inches plot with range from -30 to 30 for both x and y coordinates and draw the basic tick marks plus two gray lines through the origin
 ```'reinit'
 'set display color white '; 'c'
 r=gsfallow('on')
@@ -148,7 +148,7 @@ px=h_get_px(15); py=h_get_py(15)+0.1
 'draw string 'px' 'py' You are here!'
 ```
 
-Now running the script (example2.gs), you should get a nice animation drawing the heart (because we set dt to a very small value) and this is the final result which you can print out during Valentine day as a present and prove that science is not so boring.
+Now running the script (example2.gs), you should get a nice animation drawing the heart (because we set dt to a very small value) and this is the final result which you can print out during Valentine day as a present and prove that science is not so boring ;)
 You may notice two functions, ```h_get_px(x)``` and ```h_get_py(y)```, which convert chart coordinate to plotting/physical/paper coordinates. A counter part of the two are ```h_get_x(px)``` and ```h_get_y(px)``` will convert from paper coordinates to chart coordinates.
 
 ![My Heart!](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/example2.png)
