@@ -85,7 +85,9 @@ h_draw_ltitle('SubPlot 2')
 h_cbarn('r',0,0.1)
 ```
 There are some new HiGrads functions (h_) are envolved here. 
-First, ```h_nodefault``` indicated that we will not use default tick marks of grads. In order to use HiGrads ticks marks, we need to define the X and Y coordinates by ```h_set_xrange(x1,x2)``` and ```h_set_yrange(y1,y2)```. Then ```h_draw_xtm``` and ```h_draw_ytm``` will handle the tickmarks drawing. ```h_draw_xtm``` and ```h_draw_ytm``` take 4 parameter, ```(start, end, increment, major)```, which mean it will draw minor ticks from ```start``` every ```increment``` value through ```end```, major ticks and labels are drawn every ```major``` ticks marks.
+First, ```h_nodefault``` indicated that we will not use default tick marks of grads. In order to use HiGrads ticks marks, we need to define the X and Y coordinates by ```h_set_xrange(x1,x2)``` and ```h_set_yrange(y1,y2)```. You may add the 3rd parameter (optional) which can take either ```linear``` (default) or ```log``` (for lograrithm scale), see ```h_test.gs``` for a demonstration of how to use it.
+
+Then ```h_draw_xtm``` and ```h_draw_ytm``` will handle the tickmarks drawing. ```h_draw_xtm``` and ```h_draw_ytm``` take 4 parameter, ```(start, end, increment, major)```, which mean it will draw minor ticks from ```start``` every ```increment``` value through ```end```, major ticks and labels are drawn every ```major``` ticks marks.
 ```h_draw_ltitle``` is for draw a left-aligned title (similarly, ```h_draw_rtitle``` is for right-aligned title). 
 The last one is 'h_cbarn' function to display the color scale. It has 3 parameters, the first is either 'r' or 'b', which means right or bottom postion, the second (optional) is the offset of postion, the 3rd (optional) is the font size. 
 
@@ -145,6 +147,7 @@ px=h_get_px(15); py=h_get_py(15)+0.1
 ```
 
 Now running the script (example2.gs), you should get a nice animation drawing the heart (because we set dt to a very small value) and this is the final result which you can print out during Valentine day as a present and prove that science is not so boring.
+You may notice two functions, ```h_get_px(x)``` and ```h_get_py(y)```, which convert chart coordinate to plotting/physical/paper coordinates. A counter part of the two are ```h_get_x(px)``` and ```h_get_y(px)``` will convert from paper coordinates to chart coordinates.
 
 ![My Heart!](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/example2.png)
 
