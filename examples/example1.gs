@@ -3,8 +3,7 @@
 'open model.ctl'
 
 r=gsfallow('on')
-
-h_initframe(0)
+h_initframe()
 h_set_margin(0.5,0.2,0.5,0.5)
 
 h_newframe(3,3)
