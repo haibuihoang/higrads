@@ -1,13 +1,13 @@
 # HiGrads 
-HiGrads is a GrADS script library which help compose Grads subplot in an easy way as well as provide some additional chart plotting functions. HiGrads is created initially for generating higher quality figures using GrADS for paper publishing during my Postdoctoral research at Kyoto University.
+HiGrads is a GrADS script library which helps compose Grads subplot in an easy way as well as provide some additional chart plotting functions. HiGrads is created initially for generating higher quality figures using GrADS for paper publishing during my Postdoctoral research at Kyoto University.
 
-The figure below shows the fundamental concept of frames in HiGrads approach. Each frame is considered a block, which is place adjacent to each other. This concept is borrowed from CSS’s box model, which is standard in web design. Beside the plotting area dimensions (width & height), a box has four margins (top, right, bottom, left). The code to generated this plot is just about 60 lines of code and is included in the libary (h_demo.gs).
+The figure below shows the fundamental concept of frames in HiGrads approach. Each frame is considered a block, which is placed adjacent to each other. This concept is borrowed from CSS’s box model, which is standard in web design. Beside the plotting area dimensions (width & height), a box has four margins (top, right, bottom, left). The code to generated this plot is just about 60 lines of code and is included in the library (h_demo.gs).
 
 ![HiGrads Frames](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/h_demo.png)
 
 ##A crash course
 ### 1. Installation
-You just need to unpack the libary (zip file) and copy all the files to GrADs libary. For easy maintenence, all HiGrads files have the prefix h_. 
+You just need to unpack the library (zip file) and copy all the files to GrADs library. For easy maintenance, all HiGrads files have the prefix h_. 
 
 Then, you can test HiGrads by open GrADS (portrait mode recommended) and type h_test 
 
@@ -19,30 +19,30 @@ If you get the following plot, then HiGrads work!
 
 ![HiGrads Test](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/h_test.png)
 
-You can open file h_test.gs which included in the libary to have a glance of how short and easy the plot is made. There is even not needed any data file! In the next section, we will go on a short tutorials of how these things work.
+You can open file h_test.gs which included in the library to have a glance of how short and easy the plot is made. There is even not needed any data file! In the next section, we will go on a short tutorial of how these things work.
 
 ###2. HiGrads basic usage
-HiGrads is exclusively written for GrADS script which in generall, you cannot use from GrADS command windows but in a GrADS script (.gs) file. **In a .gs file**, you need to enable grads script function by the following code:
+HiGrads is exclusively written for GrADS script which in general, you cannot use from GrADS command windows but in a GrADS script (.gs) file. **In a .gs file**, you need to enable grads script function by the following code:
 
 ```
 r=gsfallow('on')
 ```
 
-First step, you need to initialize everything
+The first step, you need to initialize everything
 
 ```
 h_initframe()
 ```
 
-Define a new frame, you can use function ```h_newframe(w,h)```. Where w & h are width & height parameters in inches (remember, grads page size is either 11x8.5 inches or 8.5x11 inches depends on landscape or portrait mode). For examples:
+Define a new frame, you can use function ```h_newframe(w,h)```. Where w & h are width & height parameters in inches (remember, GrADS page size is either 11x8.5 inches or 8.5x11 inches depends on landscape or portrait mode). For examples:
 
 ```
 h_newframe(3,3)
 ```
 
-Means that you define a box with w=3 and h=3 inches. After using that function, every grads display commands will be bound in the plotting area of that box. To create a new box, you can simple call ```h_newframe``` again (with same or different parameters).
+Means that you define a box with w=3 and h=3 inches. After using that function, every GrADS display commands will be bound in the plotting area of that box. To create a new box, you can simply call ```h_newframe``` again (with same or different parameters).
 
-What about margin? Well, all margins tooks the default values of 0.5 inches. To manage the margin of the frame, you use the function ```h_setmargin(top,right,bottom,left)``` *before* ```h_newframe```. (Remember the first is the top, then run clockwise direction, similar to CSS margin). For example:
+What about margin? Well, all margins take the default values of 0.5 inches. To manage the margin of the frame, you use the function ```h_setmargin(top,right,bottom,left)``` *before* ```h_newframe```. (Remember the first is the top, then run clockwise direction, similar to CSS margin). For example:
 ```
 h_setmargin(0.5,0.2,0.5,0.5)
 ```
@@ -53,7 +53,7 @@ If every frame has the same margins, you only need to set it once.
 
 Now, try putting everything together (example1.gs). 
 
-First reinit everything and open data file, init HiGrads and set default margins
+First, we reinitialize everything and open data file, init HiGrads and set default margins
 ```'reinit'
 'set display color white '; 'c'
 'open model.ctl'
@@ -87,11 +87,11 @@ h_cbarn('r',0,0.1)
 There are some new HiGrads functions (h_) are envolved here. 
 First, ```h_nodefault``` indicated that we will not use default tick marks of grads. In order to use HiGrads ticks marks, we need to define the X and Y coordinates by ```h_set_xrange(x1,x2)``` and ```h_set_yrange(y1,y2)```. You may add the 3rd parameter (optional) which can take either ```linear``` (default) or ```log``` (for lograrithm scale), see ```h_test.gs``` for a demonstration of how to use it.
 
-Then ```h_draw_xtm``` and ```h_draw_ytm``` will handle the tickmarks drawing. ```h_draw_xtm``` and ```h_draw_ytm``` take 4 parameter, ```(start, end, increment, major)```, which mean it will draw minor ticks from ```start``` every ```increment``` value through ```end```, major ticks and labels are drawn every ```major``` ticks marks.
+Then ```h_draw_xtm``` and ```h_draw_ytm``` will handle the tick marks drawing. ```h_draw_xtm``` and ```h_draw_ytm``` take 4 parameters, ```(start, end, increment, major)```, which mean it will draw minor ticks from ```start``` every ```increment``` value through ```end```, major ticks and labels are drawn every ```major``` ticks mark.
 
 ```h_draw_ltitle``` is for drawing a left-aligned title (similarly, ```h_draw_rtitle``` is for right-aligned title). 
 
-The last one is ```'h_cbarn'``` function to display the color scale. It has 3 parameters, the first is either 'r' or 'b', which means right or bottom postion, the second (optional) is the offset of postion, the 3rd (optional) is the font size. 
+The last one is ```'h_cbarn'``` function to display the color scale. It has 3 parameters, the first is either 'r' or 'b', which means right or bottom position, the second (optional) is the offset of position, the 3rd (optional) is the font size. 
 
 The plot should look like this
 
@@ -121,7 +121,7 @@ h_draw_line(0,-30,0,30)
 h_draw_ltitle('My Heart')
 ````
 
-Now we willd draw the chart using function ```h_draw_line```. This functions similar to ```draw line``` command in GrADS, but far more powerful because it cause draw directly on chart coordinates (default) Or physical coordinates and you can set the arrow head at the start, end, or both. Please refer to HiGrads function descriptions for more details about this. 
+Now we will draw the chart using function ```h_draw_line```. This functions similar to ```draw line``` command in GrADS, but far more powerful because it cause draw directly on chart coordinates (default) Or physical coordinates and you can set the arrowhead at the start, end, or both. Please refer to HiGrads function descriptions for more details about this. 
 
 ```
 pi=4*math_atan(1)
@@ -149,7 +149,7 @@ px=h_get_px(15); py=h_get_py(15)+0.1
 ```
 
 Now running the script (example2.gs), you should get a nice animation drawing the heart (because we set dt to a very small value) and this is the final result which you can print out during Valentine day as a present and prove that science is not so boring ;)
-You may notice two functions, ```h_get_px(x)``` and ```h_get_py(y)```, which convert chart coordinate to plotting/physical/paper coordinates. A counter part of the two are ```h_get_x(px)``` and ```h_get_y(px)``` will convert from paper coordinates to chart coordinates.
+You may notice two functions, ```h_get_px(x)``` and ```h_get_py(y)```, which convert chart coordinate to plotting/physical/paper coordinates. The counterpart of the two are ```h_get_x(px)``` and ```h_get_y(px)``` will convert from paper coordinates to chart coordinates.
 
 ![My Heart!](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/example2.png)
 
