@@ -1,7 +1,10 @@
 *
-*  color bar for hgsf
+*  color bar for 
 *  Bui Hoang Hai, 2013
 *  
+*  pos: 'b' (default) or 'r' : position of the bar
+*  offset: offset of the bar
+*  fsize: font-size 
 
 function h_cbarn(pos,offset,sz)
 
