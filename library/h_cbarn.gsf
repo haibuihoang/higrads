@@ -1,16 +1,13 @@
 *
-*  color bar for 
+*  color bar for hgsf
 *  Bui Hoang Hai, 2013
 *  
-*  pos: 'b' (default) or 'r' : position of the bar
-*  offset: offset of the bar
-*  fsize: font-size 
 
 function h_cbarn(pos,offset,sz)
 
 if(pos='pos');pos='b';endif
 if(offset='offset');offset='0';endif
-if(sz='sz');fsiz=0.14;endif
+if(sz='sz');sz=0.14;endif
 
 *
 *  Check shading information
@@ -47,7 +44,8 @@ if(sz='sz');fsiz=0.14;endif
       'draw rec 'x1' 'cy1' 'x2' 'cy2
       if (c>1)
         y1=cy1-0.1
-        'set string 1 tc 0.14 0'
+        'set strsiz 'sz
+        'set string 1 tc 4  0'
         'draw string 'x1' 'y1' 'level
       endif
       c=c+1

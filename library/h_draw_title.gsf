@@ -1,0 +1,22 @@
+*
+*  (c) Bui Hoang Hair 2013
+*  Utilities library
+*
+*
+
+function h_draw_title(title,thick,size,offset)
+
+  if(thick='thick');thick=4;endif
+  if(size='size');size=0.15;endif
+  if(offset='offset');offset=0;endif
+
+;*get graphic infomation
+'q gxinfo'
+lin=sublin(result,2);xmax=subwrd(lin,4);ymax=subwrd(lin,6)
+x = (_px1+_px2)/2
+y = _py2+ 0.1 + offset
+'set strsiz 'size
+'set string 1 bc 'thick' 0 '
+'draw string 'x' 'y' 'title
+
+return

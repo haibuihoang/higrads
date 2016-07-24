@@ -12,9 +12,11 @@ function h_draw_xlab(title, thick, size,offset)
 
 ;*get graphic infomation
 x=_px1+(_px2-_px1)*0.5 
-y=_py1 - 0.6 + offset
+y=_py1 - 0.4 + offset
 'set strsiz 'size
 'set string 1 tc 'thick' 0'
 'draw string 'x' 'y' 'title
+say 'draw string 'x' 'y' 'title
+
 
 return
