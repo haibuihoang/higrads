@@ -154,6 +154,9 @@ You may notice two functions, ```h_get_px(x)``` and ```h_get_py(y)```, which con
 ![My Heart!](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/example2.png)
 
 
+##Some complex example plots
+![Example 1](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/sample1.png)
+
 ##Other links
 * [GrADS Homepage](http://grads.iges.org/grads/)
 * [Open Grads](http://opengrads.org/)
