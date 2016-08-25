@@ -158,7 +158,7 @@ You may notice two functions, ```h_get_px(x)``` and ```h_get_py(y)```, which con
 ![Example 1](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/sample1.png)
 
 
-##Functions lists
+##Functions lists (incomplete)
 ### Frame/Block setting
 ```
 h_initframe(debug)   ;* This must be called from the start debug is optional, default=0,=1 will show the block real border
@@ -201,6 +201,7 @@ h_demo() ;*A demo script to test higrads functionality
 ```
 
 ## Global variables 
+Global variables are used accross higrads functions, you can use them directly if needed but don't change their value.
 | Variable name | Meanings |
 |---|---|
 | _debug | Debuging flag |
