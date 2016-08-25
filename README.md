@@ -202,7 +202,8 @@ h_demo() ;*A demo script to test higrads functionality
 
 ## Global variables 
 Global variables are used accross higrads functions, you can use them directly if needed but don't change their value.
-| Variable name | Meanings |
+
+|Variable name|Meanings|
 |---|---|
 | _debug | Debuging flag |
 |_x1,_x2,_y1,y2| Paper coordinates (in inches) of current bounding box|
