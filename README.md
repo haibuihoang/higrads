@@ -157,6 +157,62 @@ You may notice two functions, ```h_get_px(x)``` and ```h_get_py(y)```, which con
 ##Some complex example plots
 ![Example 1](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/sample1.png)
 
+
+##Functions lists
+### Frame/Block setting
+```
+h_initframe(debug)   ;* This must be called from the start debug is optional, default=0,=1 will show the block real border
+h_set_margin(t,r,b,l)  ;*set margin similar to CSS styles, units in inches
+h_newframe(w,h)   ;*Define a new appending block
+h_floatframe(w,h,x1,y1)  ;*Defina a floating block, x1 & y1 is the left-bottom corner coornidate in inches
+h_break()  ;* put the block to the next row instead of appending
+```
+### Coordinates functions
+```
+h_set_xrange(xmin,xmax,type)  ;*set the range for x coordinates, type is either 'linear' or 'log'
+h_set_yrange(ymin,ymax,type)  ;*similar to h_set_xrange for y coordinates
+h_get_px(x)   ;*from chart coordiates --> paper/plot coordinates (inches)
+h_get_py(y)
+h_get_x(px)   ;*from  paper/plot coordinates (inches) --> chart coordiates 
+h_get_y(py)
+```
+
+### Drawing function chart lable
+```
+h_draw_xtm(min,max,dx,maj,siz,offset)  ;*draw tick marks
+h_draw_ytm(min,max,dy,maj,siz)
+
+h_draw_title(title,thick,size,offset)  ;*draw title, left, and right-aligned titles
+h_draw_ltitle(title,thick,size,offset)
+h_draw_rtitle(title,thick,size,offset)
+
+h_draw_xlab(title, thick, size, offset)   ;*draw chart lables
+h_draw_ylab(title, thick, size, offset)
+
+h_draw_mark(vx,vy,type,size)  ;* draw mark, vx, vy in chart coordinates
+h_draw_line(x1,y1,x2,y2,onchart,arrow,angle,head)  ;*draw line/arrow, onchart=1-->use chart coordinates (default),=0: use paper coordinates; arrow=0: no arrow, ='s': arrow at start,='e', arrow at end, ='se' arrow at both ends, head & angle define arrow shape
+
+h_cbarn(pos,offset,sz) ;*similar to cbarn, pos='b' for bottom possition,='r' for right. offset in inch from default position, sz is string size.
+
+```
+### Other functions
+```
+h_demo() ;*A demo script to test higrads functionality
+```
+
+## Global variables 
+| Variable name | Meanings |
+|---|---|
+| _debug | Debuging flag |
+|_x1,_x2,_y1,y2| Paper coordinates (in inches) of current bounding box|
+|_px1,_px2,_py1,_py1| Paper coordinates (in inches) of current chart|
+|_y1min|The lowest coordinate|
+|_top, _right, _bottom, _left|Box margins (in inches)|
+|_xmin, _xmin, _ymin, _ymax| Range of chart coordinates |
+|_ax,_bx,_apx,_bpx,_xscale,_yscale|Coeficent for coordinates, DON'T mess with these!| 
+
+
+
 ##Other links
 * [GrADS Homepage](http://grads.iges.org/grads/)
 * [Open Grads](http://opengrads.org/)
