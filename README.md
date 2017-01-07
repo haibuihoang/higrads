@@ -33,6 +33,8 @@ The first step, you need to initialize everything
 ```
 h_initframe()
 ```
+This function might take a parameter:  'l2r' (default): frames are places from left to right, 't2b': frames are place from top to bottom
+
 
 Define a new frame, you can use function ```h_newframe(w,h)```. Where w & h are width & height parameters in inches (remember, GrADS page size is either 11x8.5 inches or 8.5x11 inches depends on landscape or portrait mode). For examples:
 
@@ -161,7 +163,7 @@ You may notice two functions, ```h_get_px(x)``` and ```h_get_py(y)```, which con
 ##Functions lists (incomplete)
 ### Frame/Block setting
 ```
-h_initframe(debug)   ;* This must be called from the start debug is optional, default=0,=1 will show the block real border
+h_initframe(order,debug)   ;*This must be called from the start. order is optional:'l2r' (default) or 't2b'   debug is optional, default=0,=1 will show the block real border
 h_set_margin(t,r,b,l)  ;*set margin similar to CSS styles, units in inches
 h_newframe(w,h)   ;*Define a new appending block
 h_floatframe(w,h,x1,y1)  ;*Defina a floating block, x1 & y1 is the left-bottom corner coornidate in inches
