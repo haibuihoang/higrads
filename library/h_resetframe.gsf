@@ -9,7 +9,7 @@ _x2=_x1
 _y1=_gymax
 _y2=_y1
 _y1min=_y2
-
+_x2max=_x1
 
 return
 

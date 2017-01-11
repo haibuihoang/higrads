@@ -2,7 +2,8 @@
 *   Init frame
 *
 
-function h_initframe(debug)
+function h_initframe(order,debug)
+if (order='order');order='l2r';endif
 if (debug='debug');debug=0;endif
 _debug=debug
 'set vpage off'
@@ -16,12 +17,16 @@ _x2=_x1
 _y1=_gymax
 _y2=_y1
 _y1min=_y2
+_x2max=_x1
 
 *init default margin
 _top=0.5
 _right=0.5
 _bottom=0.5
 _left=0.5
+
+*place order default: left to right first, order is 't2b'
+_h_order=order
 
 return
 

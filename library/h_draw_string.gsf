@@ -2,13 +2,11 @@
 *  Draw a string at a specific location on the charts,
 *  vx,vy is the chart coordinates, not drawing coordinates
 *
-function h_draw_string(vx,vy,string)
-
-   tempx = (_px2-_px1)/(_xmax-_xmin)
-   tempy = (_py2-_py1)/(_ymax-_ymin)
-
-   x = _px1 + (vx-_xmin)*tempx
-   y = _py1 + (vy-_ymin)*tempy
+function h_draw_string(vx,vy,string,offset_x,offset_y)
+   if (offset_x='offset_x'); offset_x=0; endif
+   if (offset_y='offset_y'); offset_y=0; endif
+   x = h_get_px(vx) + offset_x
+   y = h_get_py(vy) + offset_y
    'draw string 'x' 'y' 'string
 
 return

@@ -12,10 +12,10 @@ if (r='r');r=t  ;endif
 if (b='b');b=t  ;endif
 if (l='l');l=r  ;endif
 
-_top=t
-_right=r
-_bottom=b
-_left=l
+if (t!='-'); _top=t; endif
+if (r!='-'); _right=r; endif
+if (b!='-'); _bottom=b; endif
+if (l!='-'); _left=l; endif
 
 return
 

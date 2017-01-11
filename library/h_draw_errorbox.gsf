@@ -1,0 +1,46 @@
+*draw a rectangle bar in chart
+*xc & val are in chart coordinate, wid in inch
+*negative value of color means no drawing
+function h_draw_errorbox(xc,min,q1,med,mean,q3,max,wid,linecol,bgcol)
+
+   if (wid='wid');wid=0.1;endif
+   if (linecol='linecol');linecol=1;endif
+   if (bgcol='bgcol');bgcol=0;endif
+
+   xc=h_get_px(xc)
+
+   say xc','min','q1','med','q3','max   
+
+*Draw whisker first
+   x1=xc-wid/2; 
+   x2=xc+wid/2
+   y1=h_get_py(min);
+   y2=h_get_py(max);
+    
+   'set line 'linecol
+   say 'set line 'linecol
+ 
+   'draw line 'x1' 'y1' 'x2' 'y1 
+   'draw line 'x1' 'y2' 'x2' 'y2
+   'draw line 'xc' 'y1' 'xc' 'y2 
+
+
+*draw box
+   x1=xc-wid
+   x2=xc+wid
+   y1=h_get_py(q1);
+   y2=h_get_py(q3);
+   ymed=h_get_py(med);
+   ymean=h_get_py(mean);
+
+   'set line 'bgcol 
+   'draw recf 'x1' 'y1' 'x2' 'y2
+   
+   'set line 'linecol
+   'draw rec 'x1' 'y1' 'x2' 'y2
+   'draw line 'x1' 'ymed' 'x2' 'ymed
+  
+   'draw mark 12 'xc' 'ymean' '0.05
+
+return
+

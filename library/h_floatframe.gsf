@@ -23,6 +23,8 @@ _py1 = y1
 _py2 = _py1 + h
 'set parea '_px1' '_px2' '_py1' '_py2
 
+say 'set parea '_px1' '_px2' '_py1' '_py2
+
 
 return
 

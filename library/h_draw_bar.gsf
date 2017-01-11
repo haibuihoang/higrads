@@ -1,0 +1,29 @@
+*draw a rectangle bar in chart
+*xc & val are in chart coordinate, wid in inch
+*negative value of color means no drawing
+function h_draw_bar(xc,val,wid,linecol,bgcol,styl,thck)
+
+   if (wid='wid');wid=0.05;endif
+   if (linecol='linecol');linecol=1;endif
+   if (bgcol='bgcol');bgcol=0;endif
+   if (styl='styl');styl=1;endif
+   if (thck='thck');thck=3;endif
+
+   pxc=h_get_px(xc)
+   px1=pxc-wid; px2=pxc+wid
+   py1=h_get_py(0);
+   py2=h_get_py(val)
+
+   if (linecol>0)
+     'set line 'linecol' 'styl' 'thck
+     'draw rec 'px1' 'py1' 'px2' 'py2
+      say 'draw rect 'px1' 'py1' 'px2' 'py2
+     
+   endif
+   if (bgcol>0)
+     'set line 'bgcol 
+     'draw recf 'px1' 'py1' 'px2' 'py2
+   endif
+
+return
+

@@ -3,13 +3,24 @@
 *
 
 function h_break()
+
+if (_h_order='l2r')
 _x1=0
 _x2=_x1
-_y2=_y1
+_y2=_y1min
 _y1=_y2
 _y1min=_y2
+else
 
-if(_debug=1)say 'Break:'_x1' '_x2' '_y1' '_y2;endif
+_x1=_x2max
+_x2=_x1
+_y1=_gymax
+_y2=_y1
+_x2max=_x2
+
+endif 
+
+if(_debug=1); say 'Break:'_x1' '_x2' '_y1' '_y2; endif
 
 return
 

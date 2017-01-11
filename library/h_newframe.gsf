@@ -26,6 +26,8 @@ if (_x1='_x1')
 endif
 
 ;*define new frame
+if (_h_order='l2r')    ;* left to right 
+
 x1=_x2
 x2=x1+width
 y2=_y2
@@ -42,6 +44,26 @@ y1=y2-height
 if (y1<_y1min) ;*define new y1min
    _y1min=y1
 endif
+
+else   ;*top to bottom
+say 'top to bottom'
+x1=_x1
+y2=_y1
+y1=y2-height
+if (y1<0) ;*over flow
+   y2=_gymax; 
+   y1=y2-height
+   x1=_x2max
+endif
+x2=x1+width
+
+if (x2>_x2max)
+   _x2max=x2
+endif
+
+endif
+
+
 
 ;*define new frame coordinates
 _x1=x1;_x2=x2

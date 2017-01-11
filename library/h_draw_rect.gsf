@@ -1,9 +1,25 @@
 *draw a rectangle in the plotting area 
-function h_draw_rect(x1,y1,x2,y2)
-   h_draw_line(x1,y1,x1,y2)
-   h_draw_line(x2,y1,x2,y2)
-   h_draw_line(x1,y1,x2,y1)
-   h_draw_line(x1,y2,x2,y2)
+*if bgcolor<0-> not draw
+function h_draw_rect(x1,y1,x2,y2,linecolor,bgcolor)
+      
+   px1=h_get_px(x1)
+   px2=h_get_px(x2)
+   py1=h_get_py(y1)
+   py2=h_get_py(y2)
+
+   if (bgcolor!='bgcolor')
+      'set line 'bgcolor
+      'draw recf 'px1' 'py1' 'px2' 'py2
+   endif
+
+   if (linecolor='linecolor')
+      linecolor=1
+   endif
+ 
+   if (linecolor>0)
+      'set line 'linecolor
+      'draw rec 'px1' 'py1' 'px2' 'py2
+   endif   
 
 return
 

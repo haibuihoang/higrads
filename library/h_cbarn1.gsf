@@ -3,15 +3,11 @@
 *  Bui Hoang Hai, 2013
 *  
 
-function h_cbarn(pos,offset,sz,barsz,caption)
+function h_cbarn1(pos,offset,sz)
 
 if(pos='pos');pos='b';endif
 if(offset='offset');offset='0';endif
 if(sz='sz');sz=0.14;endif
-if(barsz='barsz');barsz=0.25;endif
-if(caption='caption');caption='';endif
-
-'set line 1 1 1'
 
 *
 *  Check shading information
@@ -31,7 +27,7 @@ if(caption='caption');caption='';endif
     cx1=_px1
     cx2=_px2
     cy2=_py1 - 0.5 + offset
-    cy1=cy2-barsz
+    cy1=cy2-0.25
     dx=(cx2-cx1)/cnum
     ;*draw a boundingbox
     'draw rec 'cx1' 'cy1' 'cx2' 'cy2
@@ -57,29 +53,28 @@ if(caption='caption');caption='';endif
   endif
   if (pos='r')
     cx1=_px2+0.1+offset
-    cx2= cx1+barsz
+    cx2= cx1+0.25
     cy1=_py1 
     cy2=_py2
-    dy=(cy2-cy1)/cnum
+    dy=(cy2-cy1)/(cnum-1)
     ;*draw a boundingbox
     'draw rec 'cx1' 'cy1' 'cx2' 'cy2
     c=1
-    while(c<=cnum)
+    while(c<cnum)
       info=sublin(shdinfo,c+1)
-      ;*say info
+      say '~~'info
       color=subwrd(info,1)
-      level=subwrd(info,2)
+      level=subwrd(info,3)
       y1=cy1+(c-1)*dy;y2=y1+dy 
       'set line 'color
       'draw recf 'cx1' 'y1' 'cx2' 'y2
       'set line 1'
       'draw rec 'cx1' 'y1' 'cx2' 'y2
-      if (c>1)
-        x=cx2+0.05
+      y1=y1+dy/2
+        x=cx2+0.1
         'set strsiz 'sz
         'set string 1 l 4 0'
         'draw string 'x' 'y1' 'level
-      endif
       c=c+1
     endwhile
 

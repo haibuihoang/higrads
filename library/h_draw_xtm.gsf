@@ -31,15 +31,17 @@ x=min;i=0
 while(x<=max)
   px=h_get_px(x)
   ;*draw minor tickmarks
-  if (0=math_mod(i,maj))
+  if (0=math_mod(i,maj) & x>=_xmin & x<=_xmax)
     py=_py1; py1=py+0.1;'draw line 'px' 'py' 'px' 'py1
     py=_py2;py1=py-0.1; 'draw line 'px' 'py' 'px' 'py1
     py=_py1-0.1+offset;'set string 1 tc 4 0';
     'set strsiz 'siz;
     if (siz>0); 'draw string 'px' 'py' 'x; endif
   else
+    if (x>=_xmin & x<=_xmax)
     py=_py1;py1=py+0.05; 'draw line 'px' 'py' 'px' 'py1
     py=_py2;py1=py-0.05; 'draw line 'px' 'py' 'px' 'py1
+    endif
   endif 
 
   x=x+dx;i=i+1
