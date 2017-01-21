@@ -4,7 +4,7 @@
 *
 *
 
-function h_draw_ylab(title,thick,size,offset)
+function h_draw_rylab(title,thick,size,offset)
 * Get arguments
 if(title='title');title="Something ;)";endif
 if(thick='thick');thick=4;endif
@@ -12,8 +12,8 @@ if(size='size');size=0.15;endif
 if(offset='offset');offset=0;endif
 
 y=_py1+(_py2-_py1)/2
-x=_px1-0.5+offset
+x=_px2+0.5+offset
 'set strsiz 'size
-'set string 1 bc 'thick' 90'
+'set string 1 bc 'thick' -90'
 'draw string 'x' 'y' 'title
 return

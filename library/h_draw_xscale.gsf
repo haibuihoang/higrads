@@ -20,7 +20,8 @@ function h_draw_xscale(caption,color,offset,min,max,dx,maj,siz)
 py = _py1 - 0.1 - offset 
 cx = (_px1+_px2)/2
 
-'set string 1 br 4 0'
+'set string 1 br 3 0'
+'set strsiz 'siz+0.01
 'draw string '_px2' 'py' 'caption
 
 y=py-0.1
@@ -40,12 +41,12 @@ while(x<=max)
   ;*draw minor tickmarks
   if (0=math_mod(i,maj))
 
-    y=py-0.1; y1=py-0.2;'draw line 'px' 'y' 'px' 'y1
-    y=py-0.4;'set string 1 bc 4 0';
+    y=py-0.1; y1=py;'draw line 'px' 'y' 'px' 'y1
+    y=py-0.25;'set string 1 bc 4 0';
     'set strsiz 'siz;
    'draw string 'px' 'y' 'x
   else
-    y=py-0.1;y1=py-0.15; 'draw line 'px' 'y' 'px' 'y1
+    y=py-0.1;y1=py-0.05; 'draw line 'px' 'y' 'px' 'y1
   endif 
 
   x=x+dx;i=i+1

@@ -3,12 +3,13 @@
 *  Bui Hoang Hai, 2013
 *  
 
-function h_cbarn(pos,offset,sz,barsz,caption)
+function h_cbarn(pos,offset,sz,barsz,unit,caption)
 
 if(pos='pos');pos='b';endif
 if(offset='offset');offset='0';endif
 if(sz='sz');sz=0.14;endif
 if(barsz='barsz');barsz=0.25;endif
+if(unit='unit');unit='';endif
 if(caption='caption');caption='';endif
 
 'set line 1 1 1'
@@ -82,6 +83,13 @@ if(caption='caption');caption='';endif
       endif
       c=c+1
     endwhile
+
+    if (unit!='')
+       x=(cx1+cx2)/2
+       y=cy2+0.05
+       'set string 1 bc 3 0'
+       'draw string 'x' 'y' 'unit
+    endif
 
   endif 
 
