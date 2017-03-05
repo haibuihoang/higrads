@@ -181,7 +181,7 @@ h_get_y(py)
 
 ### Drawing function chart lable
 ```
-h_draw_xtm(min,max,dx,maj,siz,offset)  ;*draw tick marks
+:h_draw_xtm(min,max,dx,maj,siz,offset) ;*draw tick marks
 h_draw_ytm(min,max,dy,maj,siz)
 
 h_draw_title(title,thick,size,offset)  ;*draw title, left, and right-aligned titles
@@ -193,7 +193,7 @@ h_draw_ylab(title, thick, size, offset)
 h_draw_string(vx,vy,string,offset_x,offset_y)  ;* draw string, vx,vy is in chart coordinates, offsets in inches
 h_draw_mark(vx,vy,type,size)  ;* draw mark, vx, vy in chart coordinates
 h_draw_line(x1,y1,x2,y2,onchart,arrow,angle,head)  ;*draw line/arrow, onchart=1-->use chart coordinates (default),=0: use paper coordinates; arrow=0: no arrow, ='s': arrow at start,='e', arrow at end, ='se' arrow at both ends, head & angle define arrow shape
-
+h_draw_rect(x1,y1,x2,y2,linecolor,bgcolor)
 h_cbarn(pos,offset,sz) ;*similar to cbarn, pos='b' for bottom possition,='r' for right. offset in inch from default position, sz is string size.
 
 ```
