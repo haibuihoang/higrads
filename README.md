@@ -157,7 +157,11 @@ You may notice two functions, ```h_get_px(x)``` and ```h_get_py(y)```, which con
 
 
 ## Some complex example plots
+Example 1 - a plot of a time-height section of zonal mean zonal wind, shear, 1-day rainfall & running average rainfall. This plot has 4 subplots with some drawing functions (h_draw_mark, h_draw_line, h_draw_rect)
 ![Example 1](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/sample1.png)
+
+Example 2 - a plot contains 28 subplots of Hovmoller diagrams, notice the axis label in between is omitted to saving the space.
+![Example 2](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/sample1.png)
 
 
 ## Functions lists (incomplete)
@@ -217,7 +221,7 @@ Global variables are used accross higrads functions, you can use them directly i
 
 
 
-##Other links
+## Other links
 * [GrADS Homepage](http://grads.iges.org/grads/)
 * [Open Grads](http://opengrads.org/)
 * [Google groups discussion for HiGrads](https://groups.google.com/forum/#!forum/higrads)
