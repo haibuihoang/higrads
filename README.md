@@ -161,7 +161,7 @@ Example 1 - a plot of a time-height section of zonal mean zonal wind, shear, 1-d
 ![Example 1](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/sample1.png)
 
 Example 2 - a plot contains 28 subplots of Hovmoller diagrams, notice the axis label in between is omitted to saving the space.
-![Example 2](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/sample1.png)
+![Example 2](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/sample2.png)
 
 
 ## Functions lists (incomplete)
