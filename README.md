@@ -21,7 +21,7 @@ If you get the following plot, then HiGrads work!
 
 You can open file h_test.gs which included in the library to have a glance of how short and easy the plot is made. There is even not needed any data file! In the next section, we will go on a short tutorial of how these things work.
 
-###2. HiGrads basic usage
+### 2. HiGrads basic usage
 HiGrads is exclusively written for GrADS script which in general, you cannot use from GrADS command windows but in a GrADS script (.gs) file. **In a .gs file**, you need to enable grads script function by the following code:
 
 ```
@@ -100,7 +100,7 @@ The plot should look like this
 ![Example 1](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/example1.png)
 
 
-###3. Let's draw a chart!!!
+### 3. Let's draw a chart!!!
 To understand more about HiGrads, let's draw a chart, and it must be an interesting one! So we are going to draw this set of equation
 > x = 16sin^3(t)
 
@@ -156,11 +156,11 @@ You may notice two functions, ```h_get_px(x)``` and ```h_get_py(y)```, which con
 ![My Heart!](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/example2.png)
 
 
-##Some complex example plots
+## Some complex example plots
 ![Example 1](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/sample1.png)
 
 
-##Functions lists (incomplete)
+## Functions lists (incomplete)
 ### Frame/Block setting
 ```
 h_initframe(order,debug)   ;*This must be called from the start. order is optional:'l2r' (default) or 't2b'   debug is optional, default=0,=1 will show the block real border
