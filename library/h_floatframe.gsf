@@ -12,9 +12,6 @@ function h_floatframe(w,h,x1,y1)
 ;*Real area=plotting area+margins
 
 
-if (_debug=1)
-  say 'floatframe: 'w' 'h
-endif
 
 ;*define new frame
 _px1 = x1 
@@ -23,7 +20,10 @@ _py1 = y1
 _py2 = _py1 + h
 'set parea '_px1' '_px2' '_py1' '_py2
 
-say 'set parea '_px1' '_px2' '_py1' '_py2
+if (_debug=1)
+  say 'floatframe: 'w' 'h
+  say 'set parea '_px1' '_px2' '_py1' '_py2
+endif
 
 
 return

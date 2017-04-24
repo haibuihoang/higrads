@@ -5,13 +5,32 @@
 *  Usage
 *  h_draw_xtm xmin xmax dx maj
 
-function h_draw_xtm(min,max,dx,maj,siz,offset)
+function h_draw_xtm(min,max,dx,maj,siz,offset,opts)
  if(min='min');min=_xmin;endif
  if(max='max');max=_xmax;endif
  if(dx='dx');dx=(_xmax-_xmin)/50;endif
  if(maj='maj');maj=5;endif
  if(siz='siz');siz=0.14;endif
  if(offset='offset');offset=0;endif
+
+
+ opts_txt=opts
+ opts=subwrd(opts_txt,1)
+ say opts
+
+ if (opts='labels')
+    n=1
+    check=1
+    while(check=1)
+      i=n+1
+      labs.n=subwrd(opts_txt,i)
+      say n'>'labs.n'<'
+      if (labs.n=''); check=0;endif
+      n=n+1 
+    endwhile
+    nlabs=n-2
+    ilab=1
+ endif
 
 ;*get graphic infomation
 'q gxinfo'
@@ -30,13 +49,28 @@ endif
 x=min;i=0
 while(x<=max)
   px=h_get_px(x)
-  ;*draw minor tickmarks
+  ;*draw major tickmarks
   if (0=math_mod(i,maj) & x>=_xmin & x<=_xmax)
-    py=_py1; py1=py+0.1;'draw line 'px' 'py' 'px' 'py1
-    py=_py2;py1=py-0.1; 'draw line 'px' 'py' 'px' 'py1
-    py=_py1-0.1+offset;'set string 1 tc 4 0';
+    py=_py1; py1=py+0.1; 'draw line 'px' 'py' 'px' 'py1
+    py=_py2; py1=py-0.1; 'draw line 'px' 'py' 'px' 'py1
+    py=_py1-0.1+offset; 'set string 1 tc 4 0';
     'set strsiz 'siz;
-    if (siz>0); 'draw string 'px' 'py' 'x; endif
+    lab=x;
+    if (opts='lons')
+      if (x>0); lab=lab'E';
+      else; lab=lab'W'; endif
+    endif
+    if (opts='lats')
+      if (x>0); lab=lab'N';
+      else; lab=lab'S'; endif
+    endif
+
+    if (opts='labels')
+       lab=labs.ilab
+       ilab=ilab+1; if (ilab>nlabs);ilab=1;endif
+    endif
+
+    if (siz>0); 'draw string 'px' 'py' 'lab; endif
   else
     if (x>=_xmin & x<=_xmax)
     py=_py1;py1=py+0.05; 'draw line 'px' 'py' 'px' 'py1

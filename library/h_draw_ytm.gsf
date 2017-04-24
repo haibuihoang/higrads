@@ -5,7 +5,7 @@
 *  Usage
 *  h_draw_xtm xmin xmax dx maj
 
-function h_draw_ytm(min,max,dy,maj,siz)
+function h_draw_ytm(min,max,dy,maj,siz,offset,opts)
 
  ;*say 'function hdraw_ytm('min','max','dy','maj','siz')'
 
@@ -31,14 +31,29 @@ y=min
 i=0
 while(y<=max)
   py = h_get_py(y)
-  if (0=math_mod(i,maj))
+  if (0=math_mod(i,maj) & y>=_ymin & y<=_ymax)
     x1=_px1;x2=x1+0.1; 'draw line 'x1' 'py' 'x2' 'py''
     x1=_px2;x2=x1-0.1;'draw line 'x1' 'py' 'x2' 'py''
     x =_px1-0.1;'set string 1 r 4 0';'set strsiz 'siz;
-    if (siz>0); 'draw string 'x' 'py' 'y; endif
+
+    lab=y;
+    if (opts='lons')
+      if (y>0); lab=lab'E';
+      else; lab=lab'W'; endif
+    endif
+    if (opts='lats')
+      if (y>0); lab=lab'N';
+      else; lab=lab'S'; endif
+    endif
+    say 'opts 'opts
+    if (siz>0); 'draw string 'x' 'py' 'lab; endif
+
+
   else
+    if ( y>=_ymin & y<=_ymax)
     x1=_px1;x2=x1+0.05; 'draw line 'x1' 'py' 'x2' 'py''
     x1=_px2;x2=x1-0.05; 'draw line 'x1' 'py' 'x2' 'py''
+    endif
   endif 
 
   y=y+dy;i=i+1
