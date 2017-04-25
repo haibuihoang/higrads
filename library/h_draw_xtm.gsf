@@ -58,11 +58,22 @@ while(x<=max)
     lab=x;
     if (opts='lons')
       if (x>0); lab=lab'E';
-      else; lab=lab'W'; endif
+      else;
+         if (x<0 & x != 180) 
+            lab=-lab; lab=lab'W'; 
+         endif
+      endif
     endif
     if (opts='lats')
       if (x>0); lab=lab'N';
-      else; lab=lab'S'; endif
+      else; 
+        if (x=0)
+          lab='EQ'
+        else
+          lab=-lab
+          lab=lab'S'; 
+        endif
+      endif
     endif
 
     if (opts='labels')
