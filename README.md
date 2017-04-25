@@ -99,6 +99,9 @@ The plot should look like this
 
 ![Example 1](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/example1.png)
 
+Adding options for displaying lat/lon (see example1.gs for details) and change the color scale by using ```h_rgb``` command, we got
+
+![Example 1 final](https://raw.githubusercontent.com/haibuihoang/higrads/master/examples/example1_final.png)
 
 ### 3. Let's draw a chart!!!
 To understand more about HiGrads, let's draw a chart, and it must be an interesting one! So we are going to draw this set of equation
